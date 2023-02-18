@@ -39,3 +39,12 @@ def user_interface(rel_count, rel_info_list, nrel_info_list, title, summary):
             print("Invalid input. Please enter (Y/N).")
 
     return rel_count, rel_info_list, nrel_info_list
+
+
+def create_stopwords_list():
+
+    stop_words = []
+    with open('stopwords.txt', 'r') as f:
+        for line in f:
+            stop_words.append(line.strip('\n').split(',')[0])
+    return stop_words
