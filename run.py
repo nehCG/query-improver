@@ -1,5 +1,6 @@
 import function
 import display
+from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
 
 
 def search(google_api_key, google_engine_id, precision, query):
@@ -50,3 +51,15 @@ def search(google_api_key, google_engine_id, precision, query):
         if (curr_precision == 0):
             print("There are no relevant results among the top-10 pages that Google returns. Program terminated")
             return
+
+        # calculate the TF-IDF score using Scikit-Learn
+
+        rel_tfidf_transformer = TfidfTransformer(use_idf=True)
+        rel_tfidf_vec = CountVectorizer(stop_words=function.create_stopwords_list())
+        rel_word_count = rel_tfidf_vec.fit_transform(rel_info_list)
+        rel_tfidf_info = rel_tfidf_transformer.fit_transform(rel_word_count)
+
+        nrel_tfidf_transformer = TfidfTransformer(use_idf=True)
+        nrel_tfidf_vec = CountVectorizer(stop_words=function.create_stopwords_list())
+        nrel_word_count = nrel_tfidf_vec.fit_transform(rel_info_list)
+        nrel_tfidf_info = nrel_tfidf_transformer.fit_transform(nrel_word_count)
