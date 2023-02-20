@@ -67,7 +67,7 @@ Result 8
 [
  URL: https://dictionary.cambridge.org/dictionary/english/per-se
  Title: PER SE | English meaning - Cambridge Dictionary
- Summary: 5 days ago ... per se definition: 1. by or of itself: 2. by or of itself: 3. by or of itself: . Learn more.
+ Summary: 6 days ago ... per se definition: 1. by or of itself: 2. by or of itself: 3. by or of itself: . Learn more.
 ]
 
 Relevant (Y/N)?N
@@ -94,11 +94,11 @@ Precision 0.5
 Still below the desired precision of 0.9
 Indexing results ....
 Indexing results ....
-Augmenting by  keller york
+Augmenting by  thomas york
 Parameters:
 Client key  = AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg
 Engine key  = ad465f5aec6f4f725
-Query       = per se keller york
+Query       = per se thomas york
 Precision   = 0.9
 Google Search Results:
 ======================
@@ -112,53 +112,13 @@ Result 1
 Relevant (Y/N)?Y
 Result 2
 [
- URL: https://en.wikipedia.org/wiki/Per_Se_(restaurant)
- Title: Per Se (restaurant) - Wikipedia
- Summary: Per Se is a New American and French restaurant located at The Shops at Columbus Circle, ... Columbus Circle in Manhattan, New York City, owned by chef Thomas Keller.
+ URL: https://www.nytimes.com/2016/01/13/dining/pete-wells-per-se-review.html
+ Title: At Thomas Keller's Per Se, Slips and Stumbles - The New York Times
+ Summary: Jan 12, 2016 ... Dinner or lunch at this grand, hermetic, self-regarding, ungenerous restaurant brings a protracted march of many dishes. In 2004, the year Per ...
 ]
 
 Relevant (Y/N)?Y
 Result 3
-[
- URL: https://www.thomaskeller.com/new-york-new-york/per-se/restaurant
- Title: Opened in 2004, Per Se is Thomas Keller's acclaimed New York ...
- Summary: Restaurant Opened in 2004, Per Se is Thomas Keller's acclaimed New York interpretation of The French Laundry in the Deutsche Bank Center at Columbus Circle.
-]
-
-Relevant (Y/N)?Y
-Result 4
-[
- URL: https://www.exploretock.com/perse
- Title: Per Se - New York, NY | Tock
- Summary: Opened in 2004, Per Se is Thomas Keller's acclaimed interpretation of The French Laundry in the Deutsche Bank Center at Columbus Circle.
-]
-
-Relevant (Y/N)?Y
-Result 5
-[
- URL: https://www.nytimes.com/2016/01/13/dining/pete-wells-per-se-review.html
- Title: At Thomas Keller's Per Se, Slips and Stumbles - The New York Times
- Summary: Jan 12, 2016 ... Keller is still trotting them out. The name Per Se, after all, was chosen to suggest that New York would not simply reflect California's glory; ...
-]
-
-Relevant (Y/N)?Y
-Result 6
-[
- URL: https://www.yelp.com/biz/per-se-new-york
- Title: PER SE - 7270 Photos & 1824 Reviews - Food near New York, NY ...
- Summary: 1824 reviews of Per Se "This is Thomas Keller's new resturant in New York. A must if you can get a reservation."
-]
-
-Relevant (Y/N)?Y
-Result 7
-[
- URL: https://guide.michelin.com/en/new-york-state/new-york/restaurant/per-se
- Title: Per Se – New York - a MICHELIN Guide Restaurant
- Summary: Three MICHELIN Stars: Exceptional cuisine, worth a special journey! An experience at Thomas Keller's Per Se is one to be savored, recounted and remembered.
-]
-
-Relevant (Y/N)?Y
-Result 8
 [
  URL: https://www.townandcountrymag.com/.../thomas-keller-per-se-new-york- times-review/
  Title: Thomas Keller Responds to New York Times Review of Per Se ...
@@ -166,25 +126,65 @@ Result 8
 ]
 
 Relevant (Y/N)?Y
+Result 4
+[
+ URL: https://ny.eater.com/.../per-se-thomas-keller-tasting-menu-inflation-2023-nyc -restaurants
+ Title: Why a Fancy Tasting Menu Date Is Going to Cost You $1,000 in ...
+ Summary: Jan 5, 2023 ... In the past year, luxurious New York restaurants have seen their prices ... Thomas Keller's Per Se, a service-included restaurant that lets ...
+]
+
+Relevant (Y/N)?Y
+Result 5
+[
+ URL: https://www.grubstreet.com/.../new-york-times-two-star-per-se-review.html
+ Title: The New York <i>Times</i> Demoted Thomas Keller's Per Se All the ...
+ Summary: Jan 12, 2016 ... With or without supplemental charges, though, Per Se is among the worst food deals in New York. There are some things to like — the squash ...
+]
+
+Relevant (Y/N)?Y
+Result 6
+[
+ URL: https://ny.eater.com/.../the-story-of-rakel-thomas-kellers-1980s-restaurant
+ Title: The Story of Rakel, Thomas Keller's 1980s Restaurant - Eater NY
+ Summary: Jul 2, 2013 ... Rakel did not make it to the new millenium, but Keller returned to New York in 2003 to open The French Laundry's fine dining counterpart, Per Se ...
+]
+
+Relevant (Y/N)?Y
+Result 7
+[
+ URL: www.forbestravelguide.com/restaurants/new-york-city-new-york/per-se
+ Title: Per Se - New York City Restaurants - New York, United States ...
+ Summary: Per Se bears the same blue front doors as The French Laundry (its country cousin ... (like nine varieties of salt), as well as chef Thomas Keller's legendary.
+]
+
+Relevant (Y/N)?Y
+Result 8
+[
+ URL: https://www.businessinsider.com/what-a-meal-at-per-se-is-like-2016-1
+ Title: What a Meal at Per Se Is Like
+ Summary: Jan 15, 2016 ... I recently got the chance to eat at the restaurant from chef Thomas Keller, where no detail is spared. Fortunately, I did not experience a dirty ...
+]
+
+Relevant (Y/N)?Y
 Result 9
 [
- URL: https://www.instagram.com/perseny/?hl=en
- Title: Per Se (@perseny) • Instagram photos and videos
- Summary: Chef Thomas Keller's 3-Star Michelin restaurant overlooking Columbus Circle & Central Park located in New York City. exploretock.com/perse. 882 posts.
+ URL: https://www.thrillist.com/...york/thomas-keller-responds-to-pete-wells- scathing-per-se-review
+ Title: Thomas Keller Responds to Pete Wells' Scathing Per Se Review ...
+ Summary: Jan 28, 2016 ... The fact that The New York Times restaurant critic Pete Wells' dining experiences at Per Se did not live up to his expectations and to ours ...
 ]
 
 Relevant (Y/N)?Y
 Result 10
 [
- URL: https://www.tripadvisor.com/Restaurant_Review-g60763-d425628-Reviews- Per_Se-New_York_City_New_York.html
- Title: PER SE, New York City - Hell's Kitchen - Menu, Prices & Restaurant ...
- Summary: Food wise, Being Peruvian is hard to please and very hard ti impress. We have been to French Laundry several times but I have to day that Mr Keller does a ...
+ URL: https://observer.com/.../times-restaurant-critic-downgrades-per-se-and-new- yorkers-panic/
+ Title: Times Restaurant Critic Downgrades Per Se, And New Yorkers ...
+ Summary: Jan 12, 2016 ... New York Times restaurant critic Pete Wells raised a lot of highbrow eyebrows with his savage review of Thomas Keller's restaurant Per Se.
 ]
 
 Relevant (Y/N)?Y
 ======================
 FEEDBACK SUMMARY
-Query per se keller york
+Query per se thomas york
 Precision 1.0
 Desired precision reached, done
 
