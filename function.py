@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 from collections import defaultdict
 
 import nltk
-nltk.download('punkt')
+nltk.download('punkt', quiet=True)
 
 
 def build_service(google_api_key):
@@ -266,7 +266,7 @@ def order_new_words(two_new_words):
     two_new_words: a list contains top two words with highest weights, using for our next query
 
     Returns:
-    two_new_words: a updated list contains top two words with highest weights, using for our next query
+    two_new_words: an updated list contains top two words with highest weights, using for our next query
 
     """
     
