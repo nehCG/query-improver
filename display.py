@@ -17,6 +17,7 @@ def start(client_key, engine_key, query, precision):
     print("Google Search Results:")
     print("======================")
 
+
 def each_result(count, url, title, summary):
     """Function to present each top-10 result to the user
     
@@ -35,6 +36,7 @@ def each_result(count, url, title, summary):
     print(" Summary:", summary)
     print("]")
     print("")
+
 
 def precision_reached(curr_precision, query):
     """Function to display feedback summary when desired precision reached

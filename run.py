@@ -16,23 +16,29 @@ def search(google_api_key, google_engine_id, precision, query):
     # Build a service object for interacting with the API
     service = function.build_service(google_api_key)
 
-    # top-10
+    # retrieve the top-10 results for the query from Google
     top10_res = function.query_result(service, query, google_engine_id)
 
-    # if fewer than 10 search results, program terminate
+    # if fewer than 10 search results retrieved in the first iteration, program will terminate
     if (len(top10_res) < 10):
         print("There are fewer than 10 search results retrieved. Program terminated.")
         return
 
-    # start point
+    # start point, display general parameters to users
     display.start(google_api_key, google_engine_id, query, precision)
 
-    # start iteration
+    # iteration starts, terminate when desired precision reached
     while True:
-        top10_res, rel_count = function.user_interface(top10_res)
+        
+        rel_res_list = []   # create a list to store relecant results
+        nrel_res_list = []  # create a list to sotre non-relevant results
+
+        # pop up a user interface that let user to determine whether the result is relevant or not
+        # then update results to corresponding list
+        rel_res_list, nrel_res_list = function.user_interface(top10_res, rel_res_list, nrel_res_list)
 
         # calculate the current iteration precision
-        curr_precision = float(rel_count / 10)
+        curr_precision = len(rel_res_list) / 10
 
         # if target value for precision reached, program terminate
         if (curr_precision >= float(precision)):
@@ -43,3 +49,20 @@ def search(google_api_key, google_engine_id, precision, query):
         if (curr_precision == 0):
             print("There are no relevant results among the top-10 pages that Google returns. Program terminated")
             return
+        
+        # calculate the document frequency of tokens in a list of search results, then update to result lists
+        rel_info_dict, rel_res_list = function.get_doc_freq(rel_res_list)
+        nrel_info_dict, nrel_res_list = function.get_doc_freq(nrel_res_list)
+
+        # create a list to keep tracking words in our query
+        query_words_list = []
+        query_words_list = ''.join(query.lower()).split()
+
+        # create a dictionary to store current query words and corresponding weights
+        query_words_weights = {word: 1.0 for word in query_words_list}
+
+        # process document frequency to get parameters for using rocchio algorithm
+        rel_info_dict_weights, rel_info_df = function.process_doc_freq(rel_info_dict, rel_res_list)
+        nrel_info_dict_weights, nrel_info_df = function.process_doc_freq(nrel_info_dict, nrel_res_list)
+
+        # Todo: apply rocchio algorithm
