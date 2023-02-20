@@ -16,7 +16,7 @@ UNI: cg3356
 
 ```run.py```: process search function, start query and iteration
 
-```README.md```: project workflow description
+```README.pdf```: project workflow description
 
 ```stopwords.txt```: stop words from (http://www.cs.columbia.edu/~gravano/cs6111/proj1-stop.txt)
 
