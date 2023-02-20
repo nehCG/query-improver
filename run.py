@@ -65,4 +65,31 @@ def search(google_api_key, google_engine_id, precision, query):
         rel_info_dict_weights, rel_info_df = function.process_doc_freq(rel_info_dict, rel_res_list)
         nrel_info_dict_weights, nrel_info_df = function.process_doc_freq(nrel_info_dict, nrel_res_list)
 
-        # Todo: apply rocchio algorithm
+        # apply rocchio algorithm to relevant results, updating query_words_weights
+        query_words_weights = function.rel_rocchio_algo(query_words_weights, rel_info_dict_weights,
+                                                        nrel_info_dict, rel_info_dict, rel_info_df, rel_res_list)
+        
+        # apply rocchio algorithm to non-relevant results, updating query_words_weights
+        query_words_weights = function.nrel_rocchio_algo(query_words_weights, nrel_info_dict_weights,
+                                                         rel_info_dict, nrel_info_dict, nrel_info_df, nrel_res_list)
+
+        # sort query_words_weights dictionary by weights with descending order       
+        sorted_tuple_list = sorted(query_words_weights.items(), key=lambda x:x[1], reverse=True)
+
+        # get top two new words from the sorted tuple list
+        two_new_words = function.get_new_words(sorted_tuple_list, query_words_list)
+
+        # order two new words
+        two_new_words = function.order_new_words(two_new_words)
+
+        # display iteration conclusion when desired precision is not reached
+        display.iter_conclusion(query, curr_precision, precision, two_new_words)
+
+        # update query, add two retrieved new words
+        query += " " + two_new_words[0] + " " + two_new_words[1]
+
+        # new iteration start point, display general parameters to users
+        display.start(google_api_key, google_engine_id, query, precision)
+
+        # retrieve the top-10 results for the new query from Google
+        top10_res = function.query_result(service, query, google_engine_id)

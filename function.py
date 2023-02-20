@@ -165,5 +165,109 @@ def process_doc_freq(info_dict, res_list):
     return info_dict_weights, info_df
 
 
-def rocchio_algo():
-    return
+def rel_rocchio_algo(query_words_weights, rel_info_dict_weights,
+                     nrel_info_dict, rel_info_dict, rel_info_df, rel_res_list):
+    """Function to apply rocchio algorithm to relevant results, updating query_words_weights
+
+    Parameters:
+    query_words_weights: a dictionary stores current query words and corresponding weights
+    rel_info_dict_weights: a dictionary stores relevant info where the keys are words and the values are weights
+    nrel_info_dict: a dict stores non-relevant info
+    rel_info_dict: a dict stores relevant info
+    rel_info_df: a dictionary stores relevant info where the keys are words and the values are document frequency
+    rel_res_list: a list includes all relevant results
+
+    Returns:
+    query_words_weights: a dictionary stores query words and corresponding weights, updated by relevant results
+
+    """
+
+    alpha, beta = 1, 0.75
+
+    for term in rel_info_dict:
+        if term in nrel_info_dict:
+            inverse_doc_freq = math.log10(10 / (float(len(rel_info_dict[term]) + len(nrel_info_dict[term]))))
+        else:
+            inverse_doc_freq = math.log10(10 / float(len(rel_info_dict[term])))
+
+        rel_info_dict_weights[term] += beta * inverse_doc_freq * (len(rel_info_dict[term]) * float(rel_info_df[term]) / len(rel_res_list))
+            
+        if term in query_words_weights:
+            query_words_weights[term] = alpha * query_words_weights[term] + rel_info_dict_weights[term]
+        elif rel_info_dict_weights[term] > 0:
+            query_words_weights[term] = rel_info_dict_weights[term]
+
+    return query_words_weights
+
+
+def nrel_rocchio_algo(query_words_weights, nrel_info_dict_weights,
+                      rel_info_dict, nrel_info_dict, nrel_info_df, nrel_res_list):
+    """Function to apply rocchio algorithm to non-relevant results, updating query_words_weights
+
+    Parameters:
+    query_words_weights: a dictionary stores updated query words and corresponding weights
+    nrel_info_dict_weights: a dictionary stores non-relevant info where the keys are words and the values are weights
+    rel_info_dict: a dict stores relevant info
+    nrel_info_dict: a dict stores non-relevant info
+    nrel_info_df: a dictionary stores non-relevant info where the keys are words and the values are document frequency
+    nrel_res_list: a list includes all non-relevant results
+
+    Returns:
+    query_words_weights: a dictionary stores query words and corresponding weights, updated by non-relevant results
+
+    """
+
+    alpha, gamma = 1, 0.15
+
+    for term in nrel_info_dict:
+        if term in rel_info_dict:
+            inverse_doc_freq = math.log10(10 / (float(len(nrel_info_dict[term]) + len(rel_info_dict[term]))))
+        else:
+            inverse_doc_freq = math.log10(10 / float(len(nrel_info_dict[term])))
+
+        nrel_info_dict_weights[term] -= gamma * inverse_doc_freq * (len(nrel_info_dict[term]) * float(nrel_info_df[term]) / len(nrel_res_list))
+            
+        if term in query_words_weights:
+            query_words_weights[term] = alpha * query_words_weights[term] + nrel_info_dict_weights[term]
+        elif nrel_info_dict_weights[term] > 0:
+            query_words_weights[term] = nrel_info_dict_weights[term]
+
+    return query_words_weights
+
+
+def get_new_words(sorted_tuple_list, query_words_list):
+    """ Function to get two new words from sorted tuple list
+
+    Parameters:
+    sorted_tuple_list: a sorted tuple list contains (word, weight), descending order by weight
+    query_words_list: current query list
+
+    Returns:
+    two_new_words: a list contains top two words with highest weights, using for our next query
+    
+    """
+
+    two_new_words = []
+    for t in sorted_tuple_list:
+        if t[0].lower() not in query_words_list:
+            two_new_words.append(t[0].lower())
+        if len(two_new_words) == 2:
+            break
+    return two_new_words
+
+
+def order_new_words(two_new_words):
+    """Function to order two new words
+
+    Parameters:
+    two_new_words: a list contains top two words with highest weights, using for our next query
+
+    Returns:
+    two_new_words: a updated list contains top two words with highest weights, using for our next query
+
+    """
+    
+    if len(two_new_words[0]) < len(two_new_words[1]):
+        two_new_words[0], two_new_words[1] = two_new_words[1], two_new_words[0]
+    
+    return two_new_words
