@@ -4,6 +4,9 @@ from googleapiclient.discovery import build
 from nltk.tokenize import word_tokenize
 from collections import defaultdict
 
+import nltk
+nltk.download('punkt')
+
 
 def build_service(google_api_key):
     """Function to build a service object for interacting with the API
