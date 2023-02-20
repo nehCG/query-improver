@@ -8,13 +8,13 @@ UNI: cg3356
 
 ## Files submitting
 
-```display.py```: integrate output information functions
+```display.py```: define functions that integrate output information 
 
-```function.py```: principle functions 
+```function.py```: define principle functions 
 
-```main.py```: receive user input, then run search function
+```main.py```: receive user input to run the search function
 
-```run.py```: process search function, start query and iteration
+```run.py```: process search function, start querying and iteration
 
 ```README.pdf```: project workflow description
 
@@ -52,7 +52,7 @@ The command format is
 python3 main.py <google api key> <google engine id> <precision> <query>
 ```
 
-Run test cases examples
+Commands to run test cases
 
 ```
 python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "per se"
@@ -71,8 +71,8 @@ python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "c
 ```run.py``` contains ```search()``` function that defines the logic and design of the project
 - First, build a service object and retrieve the top-10 results for the initial query from google
 - Then, let the user judge whether each result is relevant or not, and calculate the precision
-- If the desired precision is reached, the program terminates, otherwise the program start query-modification. After query-modification step, the program will append two new words to the query list
-- Then repeats from retrieving the top-10 results using the updated query list until the precision determined by the user is reached
+- If the desired precision is reached, the program terminates, otherwise the program start query-modification. After query-modification step, the program will append two new words to the query list and reorder the query list
+- Then repeat, start from retrieving the top-10 results using the updated query list until the precision determined by the user is reached
 
 ```display.py``` contains print message templates to the user
 
@@ -88,7 +88,7 @@ python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "c
 - ```get_new_words()```: get two new words from sorted tuple list
 - ```order_new_words()```: order two new words
 
-```stopwords.txt```: stop words from (http://www.cs.columbia.edu/~gravano/cs6111/proj1-stop.txt)
+```stopwords.txt```: stop words text. Reference: http://www.cs.columbia.edu/~gravano/cs6111/proj1-stop.txt
 
 ### External libraries description
 
@@ -96,7 +96,7 @@ python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "c
 
 ```import math```: access to the mathematical functions pre-defined in the library
 
-```from googleapiclient.discovery import build```: to enable Google API custom search, reference(https://github.com/googleapis/google-api-python-client/blob/main/samples/customsearch/main.py)
+```from googleapiclient.discovery import build```: to enable Google API custom search. Reference: https://github.com/googleapis/google-api-python-client/blob/main/samples/customsearch/main.py
 
 ```from nltk.tokenize import word_tokenize```: divide strings into lists of substrings
 
@@ -106,17 +106,18 @@ python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "c
 
 ```from collections import defaultdict```: a container like dictionaries, can declare an argument that can have three values: list, set, or int
 
+
 ## Description of query-modification method
 
 ### Information extraction and processing
 
 In each iteration, I use ```title``` and ```snippets``` that Google returns in the query result. Since I am not downloading and analyzing the HTML files, the ```snippets``` that Google returns already contain important information and even work for NON-HTML files. Thus, I can simply ignore handling NON-HTML files.
 
-After getting query results, I split query results into two lists: rel_res_list, nrel_res_list
+After getting query results, I split query results into relevant and non-relevant lists: rel_res_list, nrel_res_list
 
 For each list,
 
-- I first combine ```title``` and ```snippets```, then tokenize into list of substrings. For better performance of query-modification, I removed all stopwords in the list to filter unimportant words. At the same time, I create a dictionary where the keys are the unique word found in the search results and the values are sets containing the indices of the search results where the word appears.
+- I first combine ```title``` and ```snippets``` strings, then tokenize into list of substrings. For better performance of query-modification, I choose to remove all stopwords in the list to filter unimportant words. At the same time, I create a dictionary where the keys are the unique word found in the search results and the values are sets containing the indices of the search results where the word appears.
 
 - Then, I calculate each word's document frequency, and create a dictionary where the keys are words and the values are document frequency. Also, create a dictionary to initialize each word's weight to 0.
 
@@ -126,16 +127,16 @@ Finally, I also create a dictionary to initialize each current query word's weig
 
 I apply the Rocchio algorithm twice, one for relevant information, another for non-relevant information
 
-for each word I extracted and stored in the dictionary
-- first, calculate the inverse document frequency
-- then apply the Rocchio algorithm formula
-- finally, update words and weights vector in the dictionary I created that includes current query vectors
+For each word I extracted and stored in the dictionary
+- First, calculate the inverse document frequency
+- Then, apply the Rocchio algorithm formula
+- Finally, update words and weights vector in the dictionary I created that includes current query vectors
 
-Reference 1: https://www.cs.cmu.edu/~wcohen/10-605/rocchio.pdf
+Rocchio algorithm reference 1: https://www.cs.cmu.edu/~wcohen/10-605/rocchio.pdf
 
-Reference 2: https://nlp.stanford.edu/IR-book/
+Rocchio algorithm reference 2: https://nlp.stanford.edu/IR-book/
 
-After applying the Rocchio algorithm, I get an updated dictionary that stores all words and corresponding weights. Sort the dictionary by weights in descending order, and return the top two words that have the highest weights but not appear in our query list.
+After applying the Rocchio algorithm, I get an updated dictionary that stores all important words and corresponding weights. Sort the dictionary by weights in descending order, and return the top two words that have the highest weights but not appear in our current query list.
 
 ### Order query words
 

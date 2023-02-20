@@ -39,6 +39,7 @@ def query_result(service, query, google_engine_id):
 
     """
 
+    # create an empty list to store query results
     top10_res = []
 
     res = (
@@ -50,6 +51,7 @@ def query_result(service, query, google_engine_id):
         .execute()
     )
 
+    # iterative update top10_res
     for r in res.get("items"):
         title = r.get('title')
         url = r.get('formattedUrl')
@@ -79,7 +81,9 @@ def user_interface(top10_res, rel_res_list, nrel_res_list):
     
     """
 
-    count = 1
+    count = 1   # the squence number of the result
+
+    # iterative display each query result and pop up the user interface
     for res in top10_res:
         display.each_result(count, res['url'], res['title'], res['summary'])
 
@@ -102,7 +106,7 @@ def user_interface(top10_res, rel_res_list, nrel_res_list):
 def create_stopwords_list():
     """Function to transfer stopwords.txt file to a list"""
 
-    stop_words = []
+    stop_words = []   # create an empty stopwords list
     with open('stopwords.txt', 'r') as f:
         for line in f:
             stop_words.append(line.strip('\n').split(',')[0])
@@ -113,27 +117,34 @@ def get_doc_freq(res_list):
     """Function to calculate the document frequency of tokens in a list of search results.
 
     Parameters:
-    re_list: a list of search results, where each search result is a dictionary 
-    that contains a "title" and a "summary" field
+    re_list: a list of search results, where each search result is a dictionary that contains a 
+    "title" and a "summary" field
 
     Returns:
     info_dict: a dictionary where the keys are the unique tokens found in the search results and the
     values are sets containing the indices of the search results where the token appears
+
     res_list: The list of search results with an additional "doc_freq" field in each dictionary. 
     The "doc_freq" field is a dictionary where the keys are the unique tokens found in the search result
     and the values are the number of search results that contain the token
 
     """
 
+    # create a defaultdict set to store unique token parameters
     info_dict = defaultdict(set)
 
     for i, res in enumerate(res_list):
         tokens = word_tokenize(res["title"] + " " + res["summary"])
+
+        # create a list to store meaningful tokens
         meaningful_tokens = []
+
+        # remove stopwords
         for w in tokens:
             if w.lower() not in create_stopwords_list() and len(w) > 1:
                 meaningful_tokens.append(w)
 
+        # create a field which is a defaultdict to store unique toke parameters
         res['doc_freq'] = defaultdict(int)
         for token in set(meaningful_tokens):
             res['doc_freq'][token] = meaningful_tokens.count(token)
@@ -157,13 +168,15 @@ def process_doc_freq(info_dict, res_list):
 
     """
 
+    # initialize each new word's weight
     info_dict_weights = {word: 0.0 for word in info_dict}
 
+    # create a dictionary to store words and corresponding document frequency
     info_df = {}
 
     for res in res_list:
-        for term in res["doc_freq"]:
-            info_df[term] = info_df.get(term, 0) + res["doc_freq"][term]
+        for word in res["doc_freq"]:
+            info_df[word] = info_df.get(word, 0) + res["doc_freq"][word]
 
     return info_dict_weights, info_df
 
@@ -185,20 +198,22 @@ def rel_rocchio_algo(query_words_weights, rel_info_dict_weights,
 
     """
 
+    # set constant values
     alpha, beta = 1, 0.75
 
-    for term in rel_info_dict:
-        if term in nrel_info_dict:
-            inverse_doc_freq = math.log10(10 / (float(len(rel_info_dict[term]) + len(nrel_info_dict[term]))))
+    # iterative update each word's weight and store to the defined dictionary
+    for word in rel_info_dict:
+        if word in nrel_info_dict:
+            inverse_doc_freq = math.log10(10 / (float(len(rel_info_dict[word]) + len(nrel_info_dict[word]))))
         else:
-            inverse_doc_freq = math.log10(10 / float(len(rel_info_dict[term])))
+            inverse_doc_freq = math.log10(10 / float(len(rel_info_dict[word])))
 
-        rel_info_dict_weights[term] += beta * inverse_doc_freq * (len(rel_info_dict[term]) * float(rel_info_df[term]) / len(rel_res_list))
+        rel_info_dict_weights[word] += beta * inverse_doc_freq * (len(rel_info_dict[word]) * float(rel_info_df[word]) / len(rel_res_list))
             
-        if term in query_words_weights:
-            query_words_weights[term] = alpha * query_words_weights[term] + rel_info_dict_weights[term]
-        elif rel_info_dict_weights[term] > 0:
-            query_words_weights[term] = rel_info_dict_weights[term]
+        if word in query_words_weights:
+            query_words_weights[word] = alpha * query_words_weights[word] + rel_info_dict_weights[word]
+        elif rel_info_dict_weights[word] > 0:
+            query_words_weights[word] = rel_info_dict_weights[word]
 
     return query_words_weights
 
@@ -220,20 +235,22 @@ def nrel_rocchio_algo(query_words_weights, nrel_info_dict_weights,
 
     """
 
+    # set constant values
     alpha, gamma = 1, 0.15
 
-    for term in nrel_info_dict:
-        if term in rel_info_dict:
-            inverse_doc_freq = math.log10(10 / (float(len(nrel_info_dict[term]) + len(rel_info_dict[term]))))
+    # iterative update each word's weight and store to the defined dictionary
+    for word in nrel_info_dict:
+        if word in rel_info_dict:
+            inverse_doc_freq = math.log10(10 / (float(len(nrel_info_dict[word]) + len(rel_info_dict[word]))))
         else:
-            inverse_doc_freq = math.log10(10 / float(len(nrel_info_dict[term])))
+            inverse_doc_freq = math.log10(10 / float(len(nrel_info_dict[word])))
 
-        nrel_info_dict_weights[term] -= gamma * inverse_doc_freq * (len(nrel_info_dict[term]) * float(nrel_info_df[term]) / len(nrel_res_list))
+        nrel_info_dict_weights[word] -= gamma * inverse_doc_freq * (len(nrel_info_dict[word]) * float(nrel_info_df[word]) / len(nrel_res_list))
             
-        if term in query_words_weights:
-            query_words_weights[term] = alpha * query_words_weights[term] + nrel_info_dict_weights[term]
-        elif nrel_info_dict_weights[term] > 0:
-            query_words_weights[term] = nrel_info_dict_weights[term]
+        if word in query_words_weights:
+            query_words_weights[word] = alpha * query_words_weights[word] + nrel_info_dict_weights[word]
+        elif nrel_info_dict_weights[word] > 0:
+            query_words_weights[word] = nrel_info_dict_weights[word]
 
     return query_words_weights
 
@@ -250,10 +267,15 @@ def get_new_words(sorted_tuple_list, query_words_list):
     
     """
 
+    # create a new list to store top two new words
     two_new_words = []
+
+    # iterative update the list, only append word does not appear in current query list
     for t in sorted_tuple_list:
         if t[0].lower() not in query_words_list:
             two_new_words.append(t[0].lower())
+
+        # stop adding when top two words added
         if len(two_new_words) == 2:
             break
     return two_new_words
@@ -271,6 +293,7 @@ def order_new_words(two_new_words):
     """
     
     if len(two_new_words[0]) < len(two_new_words[1]):
+        # switch order in the top two word list
         two_new_words[0], two_new_words[1] = two_new_words[1], two_new_words[0]
     
     return two_new_words
