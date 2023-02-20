@@ -204,20 +204,20 @@ Google Search Results:
 ======================
 Result 1
 [
- URL: https://en.wikipedia.org/wiki/Sergey_Brin
- Title: Sergey Brin - Wikipedia
- Summary: Sergey Mikhailovich Brin is an American business magnate, computer scientist, and internet entrepreneur, who co-founded Google with Larry Page. Brin was the ...
-]
-
-Relevant (Y/N)?Y
-Result 2
-[
  URL: https://www.davidbrin.com/
  Title: worlds of David Brin
  Summary: David Brin is best-known for shining light — plausibly and entertainingly — on technology, society, and countless challenges confronting our rambunctious ...
 ]
 
 Relevant (Y/N)?N
+Result 2
+[
+ URL: https://en.wikipedia.org/wiki/Sergey_Brin
+ Title: Sergey Brin - Wikipedia
+ Summary: Sergey Mikhailovich Brin is an American business magnate, computer scientist, and internet entrepreneur, who co-founded Google with Larry Page. Brin was the ...
+]
+
+Relevant (Y/N)?Y
 Result 3
 [
  URL: https://www.bringlass.com/
@@ -252,17 +252,17 @@ Result 6
 Relevant (Y/N)?N
 Result 7
 [
- URL: https://www.nytimes.com/2023/.../google-chatgpt-artificial-intelligence.html
- Title: Google Calls In Larry Page and Sergey Brin to Tackle ChatGPT and ...
- Summary: Jan 20, 2023 ... Last month, Larry Page and Sergey Brin, Google's founders, held several meetings with company executives. The topic: a rival's new chatbot, ...
+ URL: https://www.forbes.com/profile/sergey-brin/
+ Title: Sergey Brin
+ Summary: 7 Sergey Brin on the 2022 Forbes 400 - Sergey Brin stepped down as president of Alphabet, parent company of Google, in December 2019 but remains a ...
 ]
 
 Relevant (Y/N)?Y
 Result 8
 [
- URL: https://www.forbes.com/profile/sergey-brin/
- Title: Sergey Brin
- Summary: 7 Sergey Brin on the 2022 Forbes 400 - Sergey Brin stepped down as president of Alphabet, parent company of Google, in December 2019 but remains a ...
+ URL: https://www.nytimes.com/2023/.../google-chatgpt-artificial-intelligence.html
+ Title: Google Calls In Larry Page and Sergey Brin to Tackle ChatGPT and ...
+ Summary: Jan 20, 2023 ... Last month, Larry Page and Sergey Brin, Google's founders, held several meetings with company executives. The topic: a rival's new chatbot, ...
 ]
 
 Relevant (Y/N)?Y
@@ -365,15 +365,15 @@ Result 9
 [
  URL: https://www.bbc.com/news/business-55914177
  Title: Sergey Brin: Google co-founder sets up family firm in Singapore ...
- Summary: Feb 3, 2021 ... The world's ninth-richest person, Sergey Brin, is setting up a company in the city-state to manage his wealth.
+ Summary: Feb 3, 2021 ... Google co-founder Sergey Brin is setting up a family office in Singapore to help manage his wealth. · Mr Brin is the world's ninth-richest person ...
 ]
 
 Relevant (Y/N)?Y
 Result 10
 [
- URL: https://nypost.com/.../google-co-founder-sergey-brin-whos-worth-93-billion- files-for-divorce/
- Title: Google co-founder Sergey Brin -- who's worth $93 billion -- files for ...
- Summary: Jun 17, 2022 ... Sergey Brin -- the Google co-founder who is the seventh richest person in the world with a net worth north of $93 billion -- has filed to ...
+ URL: https://research.google/people/SergeyBrin/
+ Title: Sergey Brin – Google Research
+ Summary: Sergey is a recipient of a National Science Foundation Graduate Fellowship as well as an honorary MBA from Instituto de Empresa. It was at Stanford where he met ...
 ]
 
 Relevant (Y/N)?Y
@@ -423,29 +423,21 @@ Result 3
 Relevant (Y/N)?Y
 Result 4
 [
- URL: https://www.arcgis.com/apps/.../bda7594740fd40299423467b48e9ecf6
- Title: Coronavirus COVID-19 (2019-nCoV)
- Summary: Total Cases. Data source error. Total Deaths. Data source error. Total Vaccine Doses Administered. Cases | Deaths by Country/Region/Sovereignty.
-]
-
-Relevant (Y/N)?Y
-Result 5
-[
  URL: https://www.worldometers.info/coronavirus/
  Title: COVID - Coronavirus Statistics - Worldometer
  Summary: Reported Cases and Deaths by Country or Territory. NOTE: Effective February 1, 2023, the Coronavirus Tracker has switched from LIVE to Daily Updates. As a ...
 ]
 
 Relevant (Y/N)?Y
-Result 6
+Result 5
 [
- URL: https://www.cdc.gov/poxvirus/monkeypox/response/2022/us-map.html
- Title: 2022 U.S. Map & Case Count | Mpox | Poxvirus | CDC
- Summary: View a map of 2022 mpox cases in the United States.
+ URL: https://www.arcgis.com/apps/.../bda7594740fd40299423467b48e9ecf6
+ Title: Coronavirus COVID-19 (2019-nCoV)
+ Summary: Total Cases. Data source error. Total Deaths. Data source error. Total Vaccine Doses Administered. Cases | Deaths by Country/Region/Sovereignty.
 ]
 
-Relevant (Y/N)?N
-Result 7
+Relevant (Y/N)?Y
+Result 6
 [
  URL: https://www.vdh.virginia.gov/coronavirus/.../covid-19-in-virginia-cases/
  Title: Cases - Coronavirus
@@ -453,7 +445,7 @@ Result 7
 ]
 
 Relevant (Y/N)?Y
-Result 8
+Result 7
 [
  URL: https://www.cdc.gov/measles/cases-outbreaks.html
  Title: Measles Cases and Outbreaks | CDC
@@ -461,11 +453,19 @@ Result 8
 ]
 
 Relevant (Y/N)?N
-Result 9
+Result 8
 [
  URL: https://www.vacourts.gov/caseinfo/home.html
  Title: Case Status and Information
  Summary: Circuit Court. Circuit Court Case Information Online access to civil and criminal cases in select circuit courts. Cases may be searched by locality using name, ...
+]
+
+Relevant (Y/N)?N
+Result 9
+[
+ URL: https://www.cdc.gov/poxvirus/monkeypox/response/2022/us-map.html
+ Title: 2022 U.S. Map & Case Count | Mpox | Poxvirus | CDC
+ Summary: View a map of 2022 mpox cases in the United States.
 ]
 
 Relevant (Y/N)?N
@@ -536,11 +536,19 @@ Result 6
 [
  URL: https://www.azdhs.gov/covid19/data/index.php
  Title: Home - ADHS
- Summary: Rates of COVID-19 by Vaccination Status in Arizona COVID-19 Variant Report The hospital capacity dashboards ... COVID-19 Deaths ... Positive COVID-19 Cases ...
+ Summary: Rates of COVID-19 by Vaccination Status in Arizona COVID-19 Variant Report The ... Counts of new cases, deaths, tests conducted, and number of vaccine doses ...
 ]
 
 Relevant (Y/N)?Y
 Result 7
+[
+ URL: https://www.mass.gov/info-details/covid-19-response-reporting
+ Title: COVID-19 Response Reporting | Mass.gov
+ Summary: Cumulative reports on Massachusetts COVID-19 cases, testing, ... Link to COVID-19 variant data on the CDC website ... Average Age of Deaths.
+]
+
+Relevant (Y/N)?Y
+Result 8
 [
  URL: https://www.nytimes.com/interactive/2021/us/covid-cases.html
  Title: Covid in the U.S.: Latest Maps, Case and Death Counts - The New ...
@@ -548,27 +556,19 @@ Result 7
 ]
 
 Relevant (Y/N)?Y
-Result 8
-[
- URL: https://www.mass.gov/info-details/covid-19-response-reporting
- Title: COVID-19 Response Reporting | Mass.gov
- Summary: Cumulative reports on Massachusetts COVID-19 cases, testing, and hospitalizations. ... incidental hospitalizations and deaths; and hospital capacity.
-]
-
-Relevant (Y/N)?Y
 Result 9
 [
- URL: https://www.health.pa.gov/topics/disease/coronavirus/pages/cases.aspx
- Title: COVID-19 Data for Pennsylvania
- Summary: The COVID-19 Dashboard discloses the number of confirmed and probable cases, deaths, ZIP-code level data, hospital preparedness, and case and death ...
+ URL: publichealth.lacounty.gov/media/coronavirus/data/index.htm
+ Title: LA County Daily COVID-19 Data - LA County Department of Public ...
+ Summary: LA County Daily COVID-19 Data ... *including cases reported by Long Beach and Pasadena Health Departments. Testing ... New Deaths Reported (01/27/23)*: 19.
 ]
 
 Relevant (Y/N)?Y
 Result 10
 [
- URL: publichealth.lacounty.gov/media/coronavirus/data/index.htm
- Title: LA County Daily COVID-19 Data - LA County Department of Public ...
- Summary: LA County Daily COVID-19 Data ... *including cases reported by Long Beach and Pasadena Health Departments. Testing ... New Deaths Reported (01/27/23)*: 19.
+ URL: https://msdh.ms.gov/covid-19
+ Title: Coronavirus COVID-19 - Mississippi State Department of Health
+ Summary: New Reported Cases and Deaths for February 7 - 13, 2023. New Cases. 3,594. New COVID-19 positive test results reported to MSDH for this time period. Total ...
 ]
 
 Relevant (Y/N)?Y
