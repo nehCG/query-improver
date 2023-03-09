@@ -12,7 +12,7 @@
 
 ```README.pdf```: project workflow description
 
-```stopwords.txt```: stop words from (http://www.cs.columbia.edu/~gravano/cs6111/proj1-stop.txt)
+```stopwords.txt```: contain stop words
 
 ```tanscript.txt```: test cases "per se", "brin", and "cases" results
 
