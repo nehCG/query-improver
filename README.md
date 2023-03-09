@@ -1,12 +1,6 @@
-# COMS E6111-Advanced Database Systems Project 1
+# Query Improver
 
-## Member
-```
-Name: Chen Guan
-UNI: cg3356
-```
-
-## Files submitting
+## Files description
 
 ```display.py```: define functions that integrate output information 
 
@@ -52,7 +46,7 @@ The command format is
 python3 main.py <google api key> <google engine id> <precision> <query>
 ```
 
-Commands to run test cases
+Eaxmple commands to run test cases
 
 ```
 python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "per se"
@@ -88,7 +82,7 @@ python3 main.py AIzaSyCxa-7HJrWKDasjuxbUUdvPVCzrL6QQdhg ad465f5aec6f4f725 0.9 "c
 - ```get_new_words()```: get two new words from sorted tuple list
 - ```order_new_words()```: order two new words
 
-```stopwords.txt```: stop words text. Reference: http://www.cs.columbia.edu/~gravano/cs6111/proj1-stop.txt
+```stopwords.txt```: stop words text.
 
 ### External libraries description
 
